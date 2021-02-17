@@ -167,26 +167,28 @@ fn main() {
                 Event::KeyPressed{
                     code : Key::R, ..
                 } => {
-                    bird_acc = jumpa;
-                    wall_first_h = rng.gen_range(0.. 640 - wall_dis as i32 + 1) as f32;
-                    wall_first_x = 360.;
-                    wall_first_up.set_size((wall_w, wall_first_h));
-                    wall_first_up.set_fill_color(Color::MAGENTA);
-                    wall_first_up.set_position((wall_first_x, 0.));
-                    wall_first_down.set_size((wall_w, 640. - (wall_first_h + wall_dis)));
-                    wall_first_down.set_fill_color(Color::MAGENTA);
-                    wall_first_down.set_position((wall_first_x, wall_dis + wall_first_h));
-                    wall_second_x = 580.;
-                    wall_second_h = rng.gen_range(0.. 640 - wall_dis as i32 + 1) as f32;
-                    wall_second_up.set_size((wall_w, wall_second_h));
-                    wall_second_up.set_fill_color(Color::MAGENTA);
-                    wall_second_up.set_position((wall_second_x, 0.));
-                    wall_second_down.set_size((wall_w, 640. - (wall_second_h + wall_dis)));
-                    wall_second_down.set_fill_color(Color::MAGENTA);
-                    wall_second_down.set_position((wall_second_x, 160. + wall_second_h));
-                    cnt = 0;
-                    lst = 2;
-                    statu = Game::Running;
+                    if let Game::Died = statu {
+                        bird_acc = jumpa;
+                        wall_first_h = rng.gen_range(0.. 640 - wall_dis as i32 + 1) as f32;
+                        wall_first_x = 360.;
+                        wall_first_up.set_size((wall_w, wall_first_h));
+                        wall_first_up.set_fill_color(Color::MAGENTA);
+                        wall_first_up.set_position((wall_first_x, 0.));
+                        wall_first_down.set_size((wall_w, 640. - (wall_first_h + wall_dis)));
+                        wall_first_down.set_fill_color(Color::MAGENTA);
+                        wall_first_down.set_position((wall_first_x, wall_dis + wall_first_h));
+                        wall_second_x = 580.;
+                        wall_second_h = rng.gen_range(0.. 640 - wall_dis as i32 + 1) as f32;
+                        wall_second_up.set_size((wall_w, wall_second_h));
+                        wall_second_up.set_fill_color(Color::MAGENTA);
+                        wall_second_up.set_position((wall_second_x, 0.));
+                        wall_second_down.set_size((wall_w, 640. - (wall_second_h + wall_dis)));
+                        wall_second_down.set_fill_color(Color::MAGENTA);
+                        wall_second_down.set_position((wall_second_x, 160. + wall_second_h));
+                        cnt = 0;
+                        lst = 2;
+                        statu = Game::Running;
+                    }
                 },
                 Event::KeyPressed {
                     code: Key::D, ..
